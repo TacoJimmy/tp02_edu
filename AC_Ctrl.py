@@ -211,14 +211,14 @@ def AC_TrunTemp(PORT, ID, mode):
 
 if __name__ == '__main__':
     while True:
-        #print (AC_TrunONOFF('/dev/ttyS1', 123, 0))
+        #print (AC_TrunONOFF('/dev/ttyS4', 123, 0))
         '''
-        print (AC_TrunONOFF('/dev/ttyS1', 123, 1))
-        print (AC_TrunMode('/dev/ttyS1', 123, 0))
-        print (AC_TrunTemp('/dev/ttyS1', 123, 26))
+        print (AC_TrunONOFF('/dev/ttyS4', 123, 1))
+        print (AC_TrunMode('/dev/ttyS4', 123, 0))
+        print (AC_TrunTemp('/dev/ttyS4', 123, 26))
         '''
         
-        print (AC_ReadFullFunction('/dev/ttyS1',123))
+        print (AC_ReadFullFunction('/dev/ttyS4',123))
         
         
         time.sleep(5)
