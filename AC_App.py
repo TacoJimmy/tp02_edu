@@ -23,40 +23,40 @@ def ipcaccontrl(data_payload):
     
     if data_payload['method'] == 'AC1_SetOnOff':
         if data_payload['params'] == False:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 123, 0)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 123, 0)
             
         
         if data_payload['params'] == True:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 123, 1)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 123, 1)
     if data_payload['method'] == 'AC1_SetTemp':
-        AC_Ctrl.AC_TrunTemp('/dev/ttyS1', 123, data_payload['params'])
+        AC_Ctrl.AC_TrunTemp('/dev/ttyS4', 123, data_payload['params'])
         
     if data_payload['method'] == 'AC2_SetOnOff':
         if data_payload['params'] == False:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 155, 0)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 155, 0)
         
         if data_payload['params'] == True:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 155, 1)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 155, 1)
     if data_payload['method'] == 'AC2_SetTemp':
-        AC_Ctrl.AC_TrunTemp('/dev/ttyS1', 155, data_payload['params'])
+        AC_Ctrl.AC_TrunTemp('/dev/ttyS4', 155, data_payload['params'])
         
     if data_payload['method'] == 'AC3_SetOnOff':
         if data_payload['params'] == False:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 156, 0)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 156, 0)
         
         if data_payload['params'] == True:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 156, 1)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 156, 1)
     if data_payload['method'] == 'AC3_SetTemp':
-        AC_Ctrl.AC_TrunTemp('/dev/ttyS1', 156, data_payload['params'])
+        AC_Ctrl.AC_TrunTemp('/dev/ttyS4', 156, data_payload['params'])
         
     if data_payload['method'] == 'AC4_SetOnOff':
         if data_payload['params'] == False:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 157, 0)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 157, 0)
         
         if data_payload['params'] == True:
-            AC_Ctrl.AC_TrunONOFF('/dev/ttyS1', 157, 1)
+            AC_Ctrl.AC_TrunONOFF('/dev/ttyS4', 157, 1)
     if data_payload['method'] == 'AC4_SetTemp':
-        AC_Ctrl.AC_TrunTemp('/dev/ttyS1', 157, data_payload['params'])
+        AC_Ctrl.AC_TrunTemp('/dev/ttyS4', 157, data_payload['params'])
             
             
 def on_message(client, userdata, msg):
@@ -98,9 +98,9 @@ def AC_Infor():
     time.sleep(1)
     
     #AC1
-    AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',123)
+    AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',123)
     if AC1_Infor[5] == 2:
-        AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',123)
+        AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',123)
     payload = {'AC1_Status' : AC1_Infor[0],
                'AC1_mode':AC1_Infor[1],
                'AC1_windspeed':AC1_Infor[2],
@@ -112,9 +112,9 @@ def AC_Infor():
         client1.publish('v1/devices/me/telemetry', json.dumps(payload))
         time.sleep(5)
     #AC2
-    AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',155)
+    AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',155)
     if AC2_Infor[5] == 2:
-        AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',155)
+        AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',155)
     payload = {'AC2_Status' : AC2_Infor[0],
                'AC2_mode':AC2_Infor[1],
                'AC2_windspeed':AC2_Infor[2],
@@ -126,9 +126,9 @@ def AC_Infor():
         client1.publish('v1/devices/me/telemetry', json.dumps(payload))
         time.sleep(5)
     #AC3
-    AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',156)
+    AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',156)
     if AC3_Infor[5] == 2:
-        AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',156)
+        AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',156)
     payload = {'AC3_Status' : AC3_Infor[0],
                'AC3_mode':AC3_Infor[1],
                'AC3_windspeed':AC3_Infor[2],
@@ -140,9 +140,9 @@ def AC_Infor():
         client1.publish('v1/devices/me/telemetry', json.dumps(payload))
         time.sleep(5)
     #AC4
-    AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',157)
+    AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',157)
     if AC4_Infor[5] == 2:
-        AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',157)
+        AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS4',157)
     payload = {'AC4_Status' : AC4_Infor[0],
                'AC4_mode':AC4_Infor[1],
                'AC4_windspeed':AC4_Infor[2],
