@@ -154,7 +154,7 @@ def AC_ReadFullFunction(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=s
             if AC_errorall == 1:
                 AC_infor[5] = 0
         
-            master.close()
+            #master.close()
         else:
             AC_infor = [0,0,0,0,0,3]
         return (AC_infor)
@@ -165,7 +165,7 @@ def AC_ReadFullFunction(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=s
         AC_infor[3] = 0
         AC_infor[4] = 0
         AC_infor[5] = 2
-        master.close()
+        #master.close()
         return (AC_infor)
 
 def AC_error(PORT,ID): # (value 0=on/off, 1=op mode, 2=fan speed, 3=set temp, 4=read temp)
