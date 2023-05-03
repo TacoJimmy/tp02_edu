@@ -72,87 +72,94 @@ def on_message(client, userdata, msg):
 
 
 def ipc_subscribe():
-    meter_token = 'fjfp5i9VxcPRC7FrChr0'
-    meter_pass = ''
-    url = 'thingsboard.cloud'
+    try:
+        meter_token = 'fjfp5i9VxcPRC7FrChr0'
+        meter_pass = ''
+        url = 'thingsboard.cloud'
 
-    client = mqtt.Client('', True, None)
-    client.on_connect = on_connect
-    time.sleep(.5)
-    client.on_message = on_message
-    time.sleep(.5)
-    client.username_pw_set(meter_token, meter_pass)
-    client.connect(url, 1883, 60)
+        client = mqtt.Client('', True, None)
+        client.on_connect = on_connect
+        time.sleep(.5)
+        client.on_message = on_message
+        time.sleep(.5)
+        client.username_pw_set(meter_token, meter_pass)
+        client.connect(url, 1883, 60)
 
 
-    client.loop_forever()
+        client.loop_forever()
+    except:
+        pass
 
 def AC_Infor():
-    meter_token = 'k6XyHLptVPFxXgrT7tm5'
-    meter_pass = ''
-    url = 'thingsboard.cloud'
+    try:
+        meter_token = 'k6XyHLptVPFxXgrT7tm5'
+        meter_pass = ''
+        url = 'thingsboard.cloud'
 
-    client1 = mqtt.Client('', True, None)
-    client1.username_pw_set(meter_token, meter_pass)
-    client1.connect(url, 1883, 60)
-    time.sleep(1)
+        client1 = mqtt.Client('', True, None)
+        client1.username_pw_set(meter_token, meter_pass)
+        client1.connect(url, 1883, 60)
+        time.sleep(1)
     
-    #AC1
-    AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',123)
-    if AC1_Infor[5] == 2:
+        #AC1
         AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',123)
-    payload = {'AC1_Status' : AC1_Infor[0],
-               'AC1_mode':AC1_Infor[1],
-               'AC1_windspeed':AC1_Infor[2],
-               'AC1_settemp':AC1_Infor[3],
-               'AC1_roomtemp':AC1_Infor[4],
-               'AC1_linkinfor':AC1_Infor[5] }
-    print (json.dumps(payload))
-    if AC1_Infor[5] != 2:
-        client1.publish('v1/devices/me/telemetry', json.dumps(payload))
-        time.sleep(5)
-    #AC2
-    AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',155)
-    if AC2_Infor[5] == 2:
+        if AC1_Infor[5] == 2:
+            AC1_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',123)
+        payload = {'AC1_Status' : AC1_Infor[0],
+                    'AC1_mode':AC1_Infor[1],
+                    'AC1_windspeed':AC1_Infor[2],
+                    'AC1_settemp':AC1_Infor[3],
+                    'AC1_roomtemp':AC1_Infor[4],
+                    'AC1_linkinfor':AC1_Infor[5] 
+                    }
+        print (json.dumps(payload))
+        if AC1_Infor[5] != 2:
+            client1.publish('v1/devices/me/telemetry', json.dumps(payload))
+            time.sleep(5)
+        #AC2
         AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',155)
-    payload = {'AC2_Status' : AC2_Infor[0],
-               'AC2_mode':AC2_Infor[1],
-               'AC2_windspeed':AC2_Infor[2],
-               'AC2_settemp':AC2_Infor[3],
-               'AC2_roomtemp':AC2_Infor[4],
-               'AC2_linkinfor':AC2_Infor[5] }
-    print (json.dumps(payload))
-    if AC2_Infor[5] != 2:
-        client1.publish('v1/devices/me/telemetry', json.dumps(payload))
-        time.sleep(5)
-    #AC3
-    AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',156)
-    if AC3_Infor[5] == 2:
+        if AC2_Infor[5] == 2:
+            AC2_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',155)
+        payload = {'AC2_Status' : AC2_Infor[0],
+                'AC2_mode':AC2_Infor[1],
+                'AC2_windspeed':AC2_Infor[2],
+                'AC2_settemp':AC2_Infor[3],
+                'AC2_roomtemp':AC2_Infor[4],
+                'AC2_linkinfor':AC2_Infor[5] }
+        print (json.dumps(payload))
+        if AC2_Infor[5] != 2:
+            client1.publish('v1/devices/me/telemetry', json.dumps(payload))
+            time.sleep(5)
+        #AC3
         AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',156)
-    payload = {'AC3_Status' : AC3_Infor[0],
-               'AC3_mode':AC3_Infor[1],
-               'AC3_windspeed':AC3_Infor[2],
-               'AC3_settemp':AC3_Infor[3],
-               'AC3_roomtemp':AC3_Infor[4],
-               'AC3_linkinfor':AC3_Infor[5] }
-    print (json.dumps(payload))
-    if AC3_Infor[5] != 2:
-        client1.publish('v1/devices/me/telemetry', json.dumps(payload))
-        time.sleep(5)
-    #AC4
-    AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',157)
-    if AC4_Infor[5] == 2:
+        if AC3_Infor[5] == 2:
+            AC3_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',156)
+        payload = {'AC3_Status' : AC3_Infor[0],
+                'AC3_mode':AC3_Infor[1],
+                'AC3_windspeed':AC3_Infor[2],
+                'AC3_settemp':AC3_Infor[3],
+                'AC3_roomtemp':AC3_Infor[4],
+                'AC3_linkinfor':AC3_Infor[5] }
+        print (json.dumps(payload))
+        if AC3_Infor[5] != 2:
+            client1.publish('v1/devices/me/telemetry', json.dumps(payload))
+            time.sleep(5)
+        #AC4
         AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',157)
-    payload = {'AC4_Status' : AC4_Infor[0],
-               'AC4_mode':AC4_Infor[1],
-               'AC4_windspeed':AC4_Infor[2],
-               'AC4_settemp':AC4_Infor[3],
-               'AC4_roomtemp':AC4_Infor[4],
-               'AC4_linkinfor':AC4_Infor[5] }
-    print (json.dumps(payload))
-    if AC4_Infor[5] != 2:
-        client1.publish('v1/devices/me/telemetry', json.dumps(payload))
-        time.sleep(5)
+        if AC4_Infor[5] == 2:
+            AC4_Infor = AC_Ctrl.AC_ReadFullFunction('/dev/ttyS1',157)
+        payload = {'AC4_Status' : AC4_Infor[0],
+                'AC4_mode':AC4_Infor[1],
+                'AC4_windspeed':AC4_Infor[2],
+                'AC4_settemp':AC4_Infor[3],
+                'AC4_roomtemp':AC4_Infor[4],
+                'AC4_linkinfor':AC4_Infor[5] }
+        print (json.dumps(payload))
+        if AC4_Infor[5] != 2:
+            client1.publish('v1/devices/me/telemetry', json.dumps(payload))
+            time.sleep(5)
+    except:
+        pass
 
 schedule.every(1).minutes.do(AC_Infor)
  
