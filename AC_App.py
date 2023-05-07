@@ -112,7 +112,7 @@ def AC_Infor():
                     'AC1_roomtemp':AC1_Infor[4],
                     'AC1_linkinfor':AC1_Infor[5] 
                     }
-        print (json.dumps(payload))
+        #print (json.dumps(payload))
         if AC1_Infor[5] != 2:
             client1.publish('v1/devices/me/telemetry', json.dumps(payload))
             time.sleep(5)
@@ -126,7 +126,7 @@ def AC_Infor():
                 'AC2_settemp':AC2_Infor[3],
                 'AC2_roomtemp':AC2_Infor[4],
                 'AC2_linkinfor':AC2_Infor[5] }
-        print (json.dumps(payload))
+        #print (json.dumps(payload))
         if AC2_Infor[5] != 2:
             client1.publish('v1/devices/me/telemetry', json.dumps(payload))
             time.sleep(5)
@@ -140,7 +140,7 @@ def AC_Infor():
                 'AC3_settemp':AC3_Infor[3],
                 'AC3_roomtemp':AC3_Infor[4],
                 'AC3_linkinfor':AC3_Infor[5] }
-        print (json.dumps(payload))
+        #print (json.dumps(payload))
         if AC3_Infor[5] != 2:
             client1.publish('v1/devices/me/telemetry', json.dumps(payload))
             time.sleep(5)
@@ -154,7 +154,7 @@ def AC_Infor():
                 'AC4_settemp':AC4_Infor[3],
                 'AC4_roomtemp':AC4_Infor[4],
                 'AC4_linkinfor':AC4_Infor[5] }
-        print (json.dumps(payload))
+        #print (json.dumps(payload))
         if AC4_Infor[5] != 2:
             client1.publish('v1/devices/me/telemetry', json.dumps(payload))
             time.sleep(5)
