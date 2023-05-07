@@ -162,6 +162,7 @@ def AC_Infor():
         pass
 
 schedule.every(30).seconds.do(AC_Infor)
+#schedule.every(1).minutes.do(AC_Infor)
  
 t = threading.Thread(target=ipc_subscribe)
 t.start()
